@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "dnsmasq starting ..."
+dnsmasq -k -C /etc/dnsmasq/dnsmasq.conf 

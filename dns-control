@@ -1,0 +1,39 @@
+#!/bin/bash
+START() {
+  sudo cp -r `pwd`/dnsmasq_conf /powter_data/
+  docker run 	-itd \
+				--restart=always \
+				--cap-add=NET_ADMIN \
+				--net=host \
+				-v /powter_data/dnsmasq_conf/dnsmasq:/etc/dnsmasq \
+				-v /powter_data/dnsmasq_conf/dnsmasq.d:/etc/dnsmasq.d \
+				--name router_dnsmasq \
+				meninasx86/dnsmasq-x86:test
+}
+
+case "$1" in
+  start)
+    START
+    ;;
+
+  stop)
+    docker rm -f router_dnsmasq 
+    ;;
+
+  restart)
+    docker rm -f router_dnsmasq
+    START
+    ;;
+
+  status)
+    echo ""
+    echo ------------------- dns status --------------------
+    docker ps -a | grep dns 
+    nslookup www.youtube.com 127.0.0.1
+    ;; 
+
+  *)
+    echo $"Usage: $0 {start|stop|restart|status}"
+    exit 1
+
+esac
