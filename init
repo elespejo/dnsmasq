@@ -1,3 +1,16 @@
 #!/bin/bash
-echo "dnsmasq starting ..."
-dnsmasq -k -C /etc/dnsmasq/dnsmasq.conf 
+
+DM="/etc/dnsmasq/dnsmasq.conf"
+DMD=`ls /etc/dnsmasq.d/*`
+
+
+echo "Test dnsmasq configuration"
+for f in $DM $DMD
+do
+    echo $f
+    dnsmasq --test -C $f
+done
+
+
+echo "dnsmasq starting ..." 
+dnsmasq -k -C $DM
