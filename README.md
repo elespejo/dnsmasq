@@ -15,17 +15,29 @@ Docker x86 image of dnsmasq
     vim dnsmasq_conf/dnsmasq/dnsmasq.conf
     vim dnsmasq_conf/dnsmasq.d/xxx.conf
     ```
+    See dnsmasq configuration reference [here](https://wiki.debian.org/HowTo/dnsmasq)
 
-* download docker-compose
+* Install docker-compose
 
     See reference [here](https://docs.docker.com/compose/install/)
 
-## Usage
+
+## Test images
+
+* Check docker image
+
+    ```
+    $ docker images
+    ```
+    Check whether the images ( meninasx86/dnsmasq-x86 ) exist. If exist, use the command to remove.
+    ```
+    $ docker rmi meninasx86/dnsmasq-x86
+    ```
 
 * Start the dnsmasq
 
     ```
-    $ docker-compose up
+    $ docker-compose up -d
     ```
 
 * Stop the dnsmasq
@@ -34,14 +46,8 @@ Docker x86 image of dnsmasq
     $ docker-compose down
     ```
 
-* check log
+* check status
 
     ```
-    $ docker log router_dnsmasq
-    ```
-
-* Check the functionality
-
-    ```
-    $ nslookup <domain> 127.0.0.1
+    $ ./check_status.sh
     ```
