@@ -4,7 +4,10 @@ services:
     image: meninasx86/dnsmasq-x86:test
     
     ports:
-      - "53:53/udp"
+      - target: 53
+        published: 53
+        protocol: udp
+        mode: host
 
     cap_add:
       - NET_ADMIN
@@ -17,11 +20,4 @@ services:
         source: ./dnsmasq_conf/dnsmasq.d
         target: /etc/dnsmasq.d
 
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: always
-
-    
     
