@@ -3,11 +3,7 @@ services:
   router_dnsmasq:
     image: meninasx86/dnsmasq-x86:test
     
-    ports:
-      - target: 53
-        published: 53
-        protocol: udp
-        mode: host
+    network_mode: "host"
 
     cap_add:
       - NET_ADMIN
