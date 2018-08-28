@@ -1,14 +1,23 @@
 # dnsmasq-x86
 Docker x86 image of dnsmasq 
 
+## Dependence
+
+* docker ce 18.06 : [reference](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
+* docker-compose 1.22.0 : [reference](https://docs.docker.com/compose/install/)
+
 ## Preparation
 
 * Pull the code
+    
     ```
     git clone https://github.com/meninasx86/dnsmasq-x86.git
     ```
 
-* Modify the configuration in `dnsmasq_conf/dnsmasq` and `dnsmasq_conf/dnsmasq.d`
+* Modify the configuration
+    
+    For quick start, skip this step.
 
     ```
     cd dnsmasq-x86
@@ -17,22 +26,23 @@ Docker x86 image of dnsmasq
     ```
     See dnsmasq configuration reference [here](https://wiki.debian.org/HowTo/dnsmasq)
 
-* Install docker-compose
-
-    See reference [here](https://docs.docker.com/compose/install/)
-
-
-## Test images
-
-* Check docker image
+    Attention :
+        
+    The last line of dnsmasq.conf is specified the expanded configuration. The option is like this :
 
     ```
-    $ docker images
+    conf-dir=/etc/dnsmasq.d/,*.conf
     ```
-    Check whether the images ( meninasx86/dnsmasq-x86 ) exist. If exist, use the command to remove.
+    Please don't modify the path which is mounted in container.
+
+## Quick start
+
+* Clean the environment
+
     ```
-    $ docker rmi meninasx86/dnsmasq-x86
+    $ ./clean.sh
     ```
+    This script down the docker compose, checkout all the changes and remove the dnsmasq image.
 
 * Start the dnsmasq
 
