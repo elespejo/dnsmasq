@@ -2,7 +2,7 @@
 
 docker-compose down
 
-rm dnsmasq_log/*
+rm -f dnsmasq_log/*
 
 for i in check_status.sh dnsmasq_conf dnsmasq_log docker-compose.yml Dockerfile init README.md
 do
