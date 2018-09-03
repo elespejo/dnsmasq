@@ -9,5 +9,6 @@ COPY init ./
 
 VOLUME /etc/dnsmasq
 VOLUME /etc/dnsmasq.d
+VOLUME /etc/dnsmasq_log
 
 ENTRYPOINT ./init
