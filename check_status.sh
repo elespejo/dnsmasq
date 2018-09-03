@@ -20,6 +20,13 @@ docker ps -a | grep router_dnsmasq
 Hint "Check docker logs :"
 docker-compose logs
 
+Hint "Check dnsmasq log :"
+for f in dnsmasq_log
+do
+    echo $f:
+    cat $f
+done
+
 Hint "Check netstat :"
 sudo netstat -tunpl | grep dnsmasq
 
@@ -33,9 +40,10 @@ docker-compose exec router_dnsmasq ls -l init
 Hint "Check /var/cache/apk/ empty in container :"
 docker-compose exec router_dnsmasq ls -l /var/cache/apk/
 
-Hint "Check /etc/dnsmasq and /etc/dnsmasq.d exist in container :"
+Hint "Check /etc/dnsmasq, /etc/dnsmasq.d, /etc/dnsmasq_log exist in container :"
 docker-compose exec router_dnsmasq ls -l /etc/dnsmasq
 docker-compose exec router_dnsmasq ls -l /etc/dnsmasq.d
+docker-compose exec router_dnsmasq ls -l /etc/dnsmasq_log
 
 Hint "Check process dnsmasq -k -C /etc/dnsmasq/dnsmasq.conf in container :"
 docker-compose exec router_dnsmasq ps aux
