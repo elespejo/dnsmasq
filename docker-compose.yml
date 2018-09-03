@@ -15,5 +15,8 @@ services:
       - type: bind
         source: ./dnsmasq_conf/dnsmasq.d
         target: /etc/dnsmasq.d
+      - type: bind
+        source: ./dnsmasq_log
+        target: /etc/dnsmasq_log
 
     
