@@ -1,0 +1,16 @@
+FROM dorryjuice/x86_build_rpi_bi:3.4 
+
+MAINTAINER Phoenix Lv <phoenix.lv@dorry.io>
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --update bash vim dnsmasq && \
+    rm -rf /var/cache/apk/*
+
+COPY init ./
+
+VOLUME /etc/dnsmasq
+VOLUME /etc/dnsmasq.d
+VOLUME /etc/dnsmasq_log
+
+ENTRYPOINT ./init
