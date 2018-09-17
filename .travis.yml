@@ -1,0 +1,32 @@
+language: generic
+sudo: required
+dist: trusty
+env:
+  matrix:
+  - ARCH=armv6
+  - ARCH=x86
+  global:
+  - secure: ARetdS7VvpULcI5G43OZLawG1rHzlxZ5Ir3oqNv+pqaJnS3mtPRGo9XQsaXdWSMdiSDnpBM2rYlS4vA66JfsUbM7L7IO0owE+rp0DjMAWpDEsOCc0iHH9kmxoGMekg5EhMxJAVNmoECAPqhSzjPxDGL/P73kpbEpROQRw+Se/BkLSAuRYn+qQkS/Tt3OirduNuamADwS7WHQ4s6dLC9iycv0mHWl0RVwwTuxV3t/XOUpkmW4JQXsEyoKThCTOg8CasFwPdLojaS9A/mVTQ/6kKhFydpuxcs2Q/2u4rHuh29ensdGUutZ7xWD0ZRFyI6RPolDDXqdtY18cApy1bLv9kzFKUvdoSHpi9Pr2UGSl/AKNFnKUg1kw3b4lGrT1u+o9x3YgJRhWagpoqGC8HxgLsCCVBBuPS6954cc7GuDhVw+vI3n9d7ptjpaIDkJmg/3ziJ8W5P9dj+E3PJ0uU9VvMy4/L7xgE5jdIctWFXCeElfBssN1AZKBlT19/VjXPXWsT7LMQ+cVajeiYsv6cvEF4BjEVa6TEDWhZOOE2cAA3UXY99zrERNTAtd+LXm01GoHlytxKcHtu1KFnkyzQLgcM5qVkp/lGL7FgavhjBc7xr9aHsL+O9/tuBGUFT33UM26lRhlZ6Ie0tR865Ait8SYnhKNGMXrF/kJjSznz3gCoI=
+  - secure: pu98vyMUCnyh6TH9XWIu/5q6ZNFmqbdQWD/mJvavpmEcTTu/Gjw3f0O+l7/5rRC9r2QoI19unllOvjBxbRyO7S9MmWh4pijsEr8WeFniAJZQHvibrnvQZbGIHeFXkE87EhmOa9blXKcGWHzohKDmPseLLcklqopRAYeDrL42n6i0W2Ps0585+ZiLJHSvAJLw45T+fpyStEgRJZR/otu/Dau514GQ0XOEi4l3tMXb+1JC/fAxgq3np5z3WAliFSvoQAcqdy7nPPHrx1rXgOGf1dNedPaSpa8vHl/sYohCi6MDcNxYgWx3Ll8PdezQutmaSvCm9XnGbDagz2s+mpb6VHTTNDNbKwIobojqeq9VQYKrHZl79NwAixEgIi0X3fTFx2T/ORA2dQQ8oms4MOYVkkn4SBSbU6BovU1ENl94/TVtNHEsyhvH6noUsFJ8FkMPeOGmP6znSRft3jvD2Mo8/NlbP3j58HLAVEQ8yendLTQSbbfbkAsCX4O5rvGln3+iHbwuaouBipstYFUOYdnabbQFcs+qQlMNIuivXycYxfwwxzJ5loOzTqHTPkUIWm3QNXF1wGuoIDytG3HudYFB/b/yw83atAjG34zu5bqDGoPv+Ng6U1ZS/ILrpTdanwddWSrJrVokuYHMC5D6LfRKJYo1PwMez5ORYdt7NOWa1gg=
+services:
+- docker
+branches:
+  only:
+  - master
+  - develop
+  - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+before_install:
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+install: true
+script: "./build $ARCH"
+deploy:
+- provider: script
+  script: bash deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_BRANCH
+  on:
+    all_branches: true
+    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
+- provider: script
+  script: bash deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_TAG
+  on:
+    tags: true
+all_branches: true
