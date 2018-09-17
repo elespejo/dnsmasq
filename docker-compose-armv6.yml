@@ -1,4 +1,4 @@
-version: '3.7'
+version: '1'
 services:
   router_dnsmasq:
     image: valerioperez/dnsmasq-armv6:develop
@@ -9,14 +9,8 @@ services:
       - NET_ADMIN
 
     volumes:
-      - type: bind
-        source: ./dnsmasq_conf/dnsmasq
-        target: /etc/dnsmasq
-      - type: bind
-        source: ./dnsmasq_conf/dnsmasq.d
-        target: /etc/dnsmasq.d
-      - type: bind
-        source: ./dnsmasq_log
-        target: /etc/dnsmasq_log
+      - ./dnsmasq_conf/dnsmasq:/etc/dnsmasq
+      - ./dnsmasq_conf/dnsmasq.d:/etc/dnsmasq.d
+      - ./dnsmasq_log:/etc/dnsmasq_log
 
     
