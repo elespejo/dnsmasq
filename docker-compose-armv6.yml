@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   router_dnsmasq:
-    image: meninasx86/dnsmasq:armv6-test
+    image: elespejo/dnsmasq:armv6-test
     
     network_mode: "host"
 
