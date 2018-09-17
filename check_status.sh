@@ -11,14 +11,16 @@ function Hint() {
     echo -e "\n"  
 }
 
+arch="$1"
+
 Hint "Check docker compose :"
-docker-compose ps 
+docker-compose -f docker-compose-$arch.yml ps 
 
 Hint "Check docker container :"
 docker ps -a | grep router_dnsmasq
 
 Hint "Check docker logs :"
-docker-compose logs
+docker-compose -f docker-compose-$arch.yml logs
 
 Hint "Check dnsmasq log :"
 for f in dnsmasq_log
@@ -35,15 +37,15 @@ nslookup www.baidu.com 127.0.0.1
 nslookup www.youtube.com 127.0.0.1
 
 Hint "Check script init in container :"
-docker-compose exec router_dnsmasq ls -l init
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ls -l init
 
 Hint "Check /var/cache/apk/ empty in container :"
-docker-compose exec router_dnsmasq ls -l /var/cache/apk/
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ls -l /var/cache/apk/
 
 Hint "Check /etc/dnsmasq, /etc/dnsmasq.d, /etc/dnsmasq_log exist in container :"
-docker-compose exec router_dnsmasq ls -l /etc/dnsmasq
-docker-compose exec router_dnsmasq ls -l /etc/dnsmasq.d
-docker-compose exec router_dnsmasq ls -l /etc/dnsmasq_log
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ls -l /etc/dnsmasq
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ls -l /etc/dnsmasq.d
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ls -l /etc/dnsmasq_log
 
 Hint "Check process dnsmasq -k -C /etc/dnsmasq/dnsmasq.conf in container :"
-docker-compose exec router_dnsmasq ps aux
+docker-compose -f docker-compose-$arch.yml exec router_dnsmasq ps aux
