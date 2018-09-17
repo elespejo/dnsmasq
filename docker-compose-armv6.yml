@@ -1,16 +1,14 @@
-version: '1'
-services:
-  router_dnsmasq:
-    image: valerioperez/dnsmasq-armv6:develop
+router_dnsmasq:
+  image: valerioperez/dnsmasq-armv6:develop
     
-    network_mode: "host"
+  net: "host"
 
-    cap_add:
-      - NET_ADMIN
+  cap_add:
+    - NET_ADMIN
 
-    volumes:
-      - ./dnsmasq_conf/dnsmasq:/etc/dnsmasq
-      - ./dnsmasq_conf/dnsmasq.d:/etc/dnsmasq.d
-      - ./dnsmasq_log:/etc/dnsmasq_log
+  volumes:
+    - ./dnsmasq_conf/dnsmasq:/etc/dnsmasq
+    - ./dnsmasq_conf/dnsmasq.d:/etc/dnsmasq.d
+    - ./dnsmasq_log:/etc/dnsmasq_log
 
     
