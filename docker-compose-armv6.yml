@@ -1,5 +1,5 @@
 router_dnsmasq:
-  image: valerioperez/dnsmasq-armv6:develop
+  image: elespejo/dnsmasq-armv6:develop
     
   net: "host"
 
