@@ -10,10 +10,9 @@
 
 [![GitHub release](https://img.shields.io/github/release/elespejo/dnsmasq.svg)](https://github.com/elespejo/dnsmasq/releases)
 ![Github All Releases](https://img.shields.io/github/downloads/elespejo/dnsmasq/total.svg)
-[![Docker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq.svg)](https://hub.docker.com/r/elespejo/dnsmasq/tags/)
+[![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-x86/tags/)
+[![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-armv6.svg)](https://hub.docker.com/r/elespejo/dnsmasq-armv6/tags/)
 ![Travis (.org) branch](https://img.shields.io/travis/elespejo/dnsmasq/master.svg)
-[![Docker Automated build](https://img.shields.io/docker/automated/elespejo/dnsmasq.svg)](https://hub.docker.com/r/elespejo/dnsmasq/)
-[![Docker Build Status](https://img.shields.io/docker/build/elespejo/dnsmasq.svg)](https://hub.docker.com/r/elespejo/dnsmasq/builds/)
 ![GitHub](https://img.shields.io/github/license/elespejo/dnsmasq.svg)
 
 # Dependence
@@ -29,6 +28,7 @@ For armv6 : `pip install docker-compose`
   - Pull the code from github.
     ```bash
     $ git clone https://github.com/elespejo/dnsmasq.git
+    $ cd dnsmasq/test
     ```
 
   - According to your machine's architecture ( x86 or armv6 ) , Select the compose file.  
@@ -42,7 +42,7 @@ For armv6 : `pip install docker-compose`
 
   - Check the status.
     ```bash
-    $ ./check_status.sh
+    $ ./check_status.sh x86
     ```
 
   - Stop the dnsmasq service.
@@ -63,7 +63,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Build
 ```bash
-./build.sh ARCH
+./build/build.sh ARCH
 ```
 `ARCH` is `x86` or `armv6`.
 
