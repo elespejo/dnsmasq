@@ -23,11 +23,7 @@ Hint "Check docker logs :"
 docker-compose -f docker-compose-$arch.yml logs
 
 Hint "Check dnsmasq log :"
-for f in dnsmasq_log
-do
-    echo $f:
-    cat $f
-done
+ls -l dnsmasq_log
 
 Hint "Check netstat :"
 sudo netstat -tunpl | grep dnsmasq
