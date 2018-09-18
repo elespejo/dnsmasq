@@ -18,15 +18,15 @@ branches:
 before_install:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 install: true
-script: "./build.sh $ARCH"
+script: "./build/build.sh $ARCH"
 deploy:
 - provider: script
-  script: bash deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_BRANCH
+  script: bash build/deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_BRANCH
   on:
     all_branches: true
     condition: "$TRAVIS_BRANCH =~ ^master|develop$"
 - provider: script
-  script: bash deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_TAG
+  script: bash build/deploy.sh $DOCKER_USER $DOCKER_PASS $ARCH $TRAVIS_TAG
   on:
     tags: true
 all_branches: true
