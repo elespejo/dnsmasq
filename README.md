@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.lucidchart.com/documents/view/3097db30-276d-45c1-81a6-37e8d2233d18">
+  <img src=https://www.lucidchart.com/publicSegments/view/29425bed-466b-494b-9eed-d58802ef3065/image.png>
 </p>
 
 <h1 align="center"> dnsmasq </h1>
