@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="LOGO">
+  <img src="https://www.lucidchart.com/documents/view/3097db30-276d-45c1-81a6-37e8d2233d18">
 </p>
 
 <h1 align="center"> dnsmasq </h1>
@@ -10,10 +10,10 @@
 
 [![GitHub release](https://img.shields.io/github/release/elespejo/dnsmasq.svg)](https://github.com/elespejo/dnsmasq/releases)
 ![Github All Releases](https://img.shields.io/github/downloads/elespejo/dnsmasq/total.svg)
-[![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-x86/tags/)
-[![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-armv6.svg)](https://hub.docker.com/r/elespejo/dnsmasq-armv6/tags/)
 ![Travis (.org) branch](https://img.shields.io/travis/elespejo/dnsmasq/master.svg)
-![GitHub](https://img.shields.io/github/license/elespejo/dnsmasq.svg)
+![GitHub](https://img.shields.io/github/license/elespejo/dnsmasq.svg)  
+x86 : [![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-x86/tags/)  
+armv6 : [![sDocker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-armv6.svg)](https://hub.docker.com/r/elespejo/dnsmasq-armv6/tags/)
 
 # Dependence
 
