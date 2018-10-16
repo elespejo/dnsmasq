@@ -1,6 +1,24 @@
-version: ''
+version: '3.2'
 services:
-  service_name:
+  router_dnsmasq:
     image: ${OWNER}/${REPO}-${ARCH}:${VERSION}
+    
+    restart: always
 
-    command: 
+    network_mode: "host"
+
+    cap_add:
+      - NET_ADMIN
+
+    volumes:
+      - type: bind
+        source: ${CONF_DIR}/dnsmasq
+        target: /etc/dnsmasq
+      
+      - type: bind
+        source: ${CONF_DIR}/dnsmasq.d
+        target: /etc/dnsmasq.d
+      
+      - type: bind
+        source: ${LOG_DIR}
+        target: /etc/dnsmasq_log
