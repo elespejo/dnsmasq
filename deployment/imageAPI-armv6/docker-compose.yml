@@ -1,0 +1,6 @@
+version: ''
+services:
+  service_name:
+    image: ${OWNER}/${REPO}-${ARCH}:${VERSION}
+
+    command: 

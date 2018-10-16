@@ -1,0 +1,9 @@
+#!/bin/bash
+OWNER=$1
+REPO=$2
+
+for file in deployment/imageAPI-x86/temp.env deployment/imageAPI-armv6/temp.env Makefile README.md
+do
+    sed -i "s/\[OWNER\]/$OWNER/g" $file
+    sed -i "s/\[REPO\]/$REPO/g" $file
+done
