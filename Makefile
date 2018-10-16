@@ -3,8 +3,8 @@ DOCS = $(CURDIR)/docs
 IMAGE_ENV = $(CURDIR)/image
 DF = $(IMAGE_ENV)/Dockerfile
 DEPLOYMENT = $(CURDIR)/deployment
-OWNER = [OWNER]
-REPO = [REPO]
+OWNER = elespejo
+REPO = dnsmasq
 
 .PHONY: mk-book clean-book
 mk-book: $(GITBOOK)
