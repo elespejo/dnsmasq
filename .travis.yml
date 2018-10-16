@@ -1,45 +1,40 @@
 language: generic
 sudo: required
 dist: trusty
-
 env:
   matrix:
-    - ARCH=armv6
-    - ARCH=x86
-
+  - ARCH=armv6
+  - ARCH=x86
+  global:
+  - secure: m3+z6g2HV8Y3EGzBTT1LCCg34+Ape534F2dvgMesVkoE/qEpKpwtepTA8ux9SLGRx0yF8zbC1ll+2ikuf43BUKti425c2fylKT9jqaMq3/7DMObNvnzCRtanGEavHwphMc06uOdZ+6HhCwL0UsDe9o6VK9iLjJYguwUcwWGtmomyFcYOYQH3+0Kn8t03vmauyZQZSsPO/bIrwZZk1DQSjF2uqX43knz4JZRuhDE50bOI8qppx6EsAlu9G18MwUxX1RqSo7hvXa2vQC60yQ2wqfYXwBN9keAfAQ8EeqTT4eIoDSIO1SitVe+LuUyQLS2fxJTOdVxppMfvNcrCRnSiYbtEv6yy/YRY7aA2GRDjYM4/kXkOSzEUDGDw3EYY+i1xAX25w2qaahPrGvxvAWDQVewj6uCt2GhIiBvnzL6EtGFZFHLguuh/yQ4xqvtE8Q+GHjG5O82xyrupg1nzfvB5GEj4lCdMCYppWlhV2F+GL+Bnu2UZgzp0hZ8cXtADIN9pvsFxct7hDhTm3gmX4rIpyY3uoceXP++EuZCFdkejsiMKtpEpLq4shBKN94wwv3/p+cMuqmKo9gksEcOhBl1rQ4lMIul/Yngw/nnnLptIwnsNnLyK5ZLexxHGM/j6awgr+VWV5oHuC0DRFxBeVCOFP0YUsXDiB331RFohSaQGx4k=
+  - secure: rgNFw57LYojfGujXE0lX8LwvtZphqkGKanalf7Qawh7LuyAuhfSpaVKHAf/ljShLghukHUMJKyfMgaWbDzHRHsf2p+Tx8eK+VG0D3NZYhzm8HTb9o08UpcDBr1qj+CQ8uW5CpJDlO3XvgOEFkV6bENdr44GO3G6zPGwYA23MIG7lq94B9eGFMf8UCE/ZdKnzCcM6jx8rU8snNAxH7a9CArex3ZM6xXKy1VaaVtfoqYBXfl6kQ4+fdy80u7ntAq/J7c1/vSDnkCn/4tHb3J7tzEFzEiEDZ8Kd1TfLsQCT9e0u80+8GDNpUHnnYuFAOV4R2FveEtZivfli7qf0S/ed0U5swqMbUXQGf/cB02w+LssANMVGv4a9lpN2icywL1CH8gLRP48KehrJAUc8ECxAD5SoEST9Etdg6MVrEeaTLCuBiDppr2qPUxV3wZMFUe7UPt6UmTQxRJ08otvWYBNbhL7N4liz9wIrN7bIVvS+7CRAjW5LOqL4kGjdCWyeqpntjMufizwrGl+IVBiGgan7meChPrVc+CdINtDydoFewocYpgZBVyYIuV66t8lVsSsxBVo30eew+KQA6e6krHtQBdfDfm5kamkGPlMbPZfoepbGuD5yyk/V7c7r4ojo5Xz1F7Dhmgz2oiBJUhctPb0V4QRHJf1MLSZmu4RNmctXcLw=
 services:
-  - docker
-
+- docker
 branches:
   only:
-    - master
-    - develop
-    - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
-
+  - master
+  - develop
+  - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 install: true
-
-script: 
-  - make mk-image ARCH=$ARCH
-  - make mk-deployment VERSION=$TRAVIS_TAG
-
+script:
+- make mk-image ARCH=$ARCH
+- make mk-deployment VERSION=$TRAVIS_TAG
 deploy:
-  - provider: script
-    script: make deploy USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
-    on:
-      all_branches: true
-      condition: "$TRAVIS_BRANCH =~ ^master|develop$"
-  
-  - provider: script
-    script: make deploy USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
-    on:
-      tags: true
-      all_branches: true
-  
-  - provider: releases
-    prerelease: true
-    skip_cleanup: true 
-    file_glob: true
-    file: "./*.zip" 
-    on:
-      tags: true
-      all_branches: true
+- provider: script
+  script: make deploy USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
+  on:
+    all_branches: true
+    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
+- provider: script
+  script: make deploy USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
+  on:
+    tags: true
+    all_branches: true
+- provider: releases
+  prerelease: true
+  skip_cleanup: true
+  file_glob: true
+  file: "./*.zip"
+  on:
+    tags: true
+    all_branches: true
