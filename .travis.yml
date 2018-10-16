@@ -30,11 +30,11 @@ deploy:
   on:
     tags: true
     all_branches: true
-- provider: releases
-  prerelease: true
-  skip_cleanup: true
-  file_glob: true
-  file: "./*.zip"
-  on:
-    tags: true
-    all_branches: true
+#- provider: releases
+#  prerelease: true
+#  skip_cleanup: true
+#  file_glob: true
+#  file: "./*.zip"
+#  on:
+#    tags: true
+#    all_branches: true
