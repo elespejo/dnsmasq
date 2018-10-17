@@ -8,57 +8,24 @@
 </p>
 <br>
 
+GITHUB:  
 [![GitHub release](https://img.shields.io/github/release/elespejo/dnsmasq.svg)](https://github.com/elespejo/dnsmasq/releases)
 ![Github All Releases](https://img.shields.io/github/downloads/elespejo/dnsmasq/total.svg)
-x86: [![Docker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-x86/tags/)
+
+DOCKERHUB:  
+x86: [![Docker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-x86/tags/)  
 armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/elespejo/dnsmasq-x86.svg)](https://hub.docker.com/r/elespejo/dnsmasq-armv6/tags/)
 
+TRAVIS:  
 ![Travis (.org) branch](https://img.shields.io/travis/elespejo/dnsmasq/master.svg)
+
+LICENSE:  
 ![GitHub](https://img.shields.io/github/license/elespejo/dnsmasq.svg)
 
-# Deployment
+# Manual
 
-As a user, how to deploy the project
+More details see github page.
 
-# Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-How to install package
-
-
-### Running the tests
-
-Explain how to run the automated tests for this system
-
-```
-Give an example
-```
-### Documentation
-Document list of the project
-
-* user manual
-* API 
-* Requirement design
-
-
-### Build
-
-How to build
-
-### Built With
-
-Tools you used for building this project
 
 # Logistics
 
@@ -73,7 +40,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Authors
 
-* **AUTHOR** - *Initial work* - [AUTHOR](https://github.com/AUTHOR)
+* **AP1001** - *Initial work* - [AP1001](https://github.com/AP1001)
+* **Valerio-Perez** - *Improvement* - [Valerio-Perez](https://github.com/Valerio-Perez)
 
 See also the list of [contributors](https://github.com/elespejo/dnsmasq/graphs/contributors) who participated in this project.
 
