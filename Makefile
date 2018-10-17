@@ -48,7 +48,7 @@ mk-deployment-armv6: $(DEPLOYMENT_armv6)
 	zip -r $(REPO)-armv6-$(VERSION).zip $(REPO)-imageAPI-armv6
 	rm -rf $(REPO)-imageAPI-armv6
 
-mk-deployment: mk-deployment-x86 mk-deployment-armv6
+mk-deployment: mk-deployment-x86 mk-deployment-armv6 mk-confgenerator
 
 clean-deployment: $(REPO)-$(VERSION).zip
 	rm $(REPO)-$(VERSION).zip
