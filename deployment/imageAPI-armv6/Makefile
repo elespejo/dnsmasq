@@ -23,10 +23,20 @@ stop: $(COMP_DIR)/$(NAME).yml
 restart: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d --force-recreate
 
-.PHONY: status
-status: $(COMP_DIR)/$(NAME).yml
+.PHONY: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp
+status_compose_ps: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml ps
+
+status_compose_log: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs
+
+status_dnsmasq_log: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec cat dhcp.leases
+
+status_dnsmasq_dhcp: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec cat dnsmasq.log
+
+status: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp	
 
 .PHONY: list
 list: $(COMP_DIR)
