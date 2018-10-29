@@ -3,10 +3,9 @@ ENV_TEMP=$(CURDIR)/temp.env
 ENV=$(CURDIR)/.env
 
 .PHONY: config
-config:
+config: $(CONFIG_ENV) $(ENV_TEMP)
 	cp $(ENV_TEMP) $(ENV)
-	echo "CONF_DIR=$(CONF)" >> $(ENV)
-	echo "LOG_DIR=$(LOG)" >> $(ENV)
+	cat $(CONFIG_ENV) >> $(ENV)
 	cat $(ENV)
 	mkdir -p $(COMP_DIR)
 	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
