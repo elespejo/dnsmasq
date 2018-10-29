@@ -1,5 +1,5 @@
 # vistual studio code setting
 .vscode
 
-# dnsmasq log
-test/dnsmasq_log/*
+# compose file
+deployment/**/compose/*
