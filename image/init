@@ -1,11 +1,11 @@
 #!/bin/bash
 
-DM="/etc/dnsmasq/dnsmasq.conf"
-DMD=`ls /etc/dnsmasq.d/*`
+DM="/dnsmasq/dnsmasq.conf"
+DMD=`ls /dnsmasq/dnsmasq.d/*`
 
 
 echo "Test dnsmasq configuration"
-for f in $DM $DMD
+for f in $DMD
 do
     echo $f
     dnsmasq --test -C $f
