@@ -28,19 +28,29 @@ cd dnsmasq-imageAPI-[ARCH]
 
 ### Generate the docker compose file
 
-Docker compose file is used for dnsmasq deployment. Its generation requires three parameters:
-* [CONF_PATH] : The absolute path to configuration directory.  
-* [LOG_PATH] : The absolute path for storage generated log. This path will be created if it is not existed.  
+Docker compose file is used for dnsmasq deployment. Its generation requires two parameters:
+* [CONFIG_ENV] : The absolute path to config environment file.   
 * [COMP_NAME] : The name of this compose file. This name is used to control the service. Must be **uniqueness**.
 
+A env file looks like below.
+```
+# config.env
+CONF_DIR=[CONFIG_PATH]
+```
 ```bash
-make config CONF=[CONF_PATH] LOG=[LOG_PATH] NAME=[COMP_NAME]
+make config CONFIG_ENV=[ENV_PATH] NAME=[COMP_NAME]
 ```
 
-e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/` and log generated into `~/dnsmasq_log/`.
+e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/`.
+Firstly, write the env file likes below:
+```
+# config.env
+CONF_DIR=~/dnsmasq_conf/
+```
+Then, generate compose file. 
 ```bash
-cd ~/dnsmasq-x86/
-make config CONF=~/dnsmasq_conf/ LOG=~/dnsmasq_log/ NAME=dns
+cd dnsmasq-imageAPI-x86/
+make config CONFIG_ENV=~/config.env NAME=dns
 ```
 Therefore a compose file named `dns.yml` is generated in `~/dnsmasq-imageAPI-x86/compose/`.
 ```yaml
@@ -53,14 +63,8 @@ services:
     network_mode: host
     restart: always
     volumes:
-    - source: ~/dnsmasq_conf/dnsmasq
-      target: /etc/dnsmasq
-      type: bind
-    - source: ~/dnsmasq_conf/dnsmasq.d
+    - source: ~/dnsmasq_conf/
       target: /etc/dnsmasq.d
-      type: bind
-    - source: ~/dnsmasq_log
-      target: /etc/dnsmasq_log
       type: bind
 version: '3.2'
 ```
