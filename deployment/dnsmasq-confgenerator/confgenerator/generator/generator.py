@@ -1,5 +1,5 @@
 
-import dnsmasq-confgenerator.generator.basic as basic
+import confgenerator.generator.basic as basic
 
 class Gen_dhcp_range(basic.JustEqual):
     """Generate dhcp-range configuration."""

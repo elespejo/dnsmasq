@@ -3,13 +3,13 @@
 import os
 import yaml
 import argparse
-import dnsmasq-confgenerator.generator.generator as gen
+import confgenerator.generator.generator as gen
 
 pwd = os.path.dirname(os.path.realpath(__file__))
 
 parser = argparse.ArgumentParser(description='Generate the dnsmasq configuration.')
 parser.add_argument('conf-info')
-parser.add_argument('-d', '--destination', dest='path', default=pwd+'/dnsmasq_conf')
+parser.add_argument('-d', '--destination', dest='path', default=pwd+'/../dnsmasq_conf')
 
 args = vars(parser.parse_args())
 info = args['conf-info']
