@@ -15,3 +15,6 @@ class Gen_dhcp_option(basic.JustEqual):
 
 class Gen_local(basic.JustEqual):
     """Generate local configuration."""
+
+class Gen_dns_server(basic.Server):
+    """Generate dns server configuration."""

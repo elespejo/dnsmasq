@@ -18,5 +18,4 @@ path = args['path']
 info_dict = yaml.load(open(info, 'r'))
 for key, val in info_dict.items():
     generator = getattr(gen, "Gen_"+key.replace('-', '_'))
-    print(generator)
     generator(val, path).write()

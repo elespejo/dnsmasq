@@ -24,3 +24,16 @@ class JustEqual(basic):
         f = open(self.file, 'w')
         f.write("%s=%s" % (self.option, self.value_list))
         f.close
+
+class Server(basic):
+    """The configuration option is server="""
+    def write(self):
+        """
+        """
+        f = open(self.file, 'a')
+        for server in self.value_list:
+            ip = server['ip']
+            start_port = server['ports']['start-port']
+            end_port = server['ports']['end-port']
+            for port in range(start_port, end_port):
+                f.write("server=%s#%s\n" % (ip, port))
