@@ -234,31 +234,22 @@
 <pre><code class="lang-bash">unzip dnsmasq-confgenerator-0.5.6.zip
 </code></pre>
 <h3 id="generate-configuration">Generate configuration</h3>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> dnsmasq-confgenerator
-./gen_dns-server.sh [SERVER_IP] [START_PORT] [END_PORT]
-</code></pre>
-<p>in which,</p>
 <ul>
-<li>[SERVER_IP]: the public ip of your dns server  </li>
-<li>[START_PORT]: the start port for resolve domain </li>
-<li>[END_PORT]: the end port for resolve domain </li>
+<li><p>Modify the conf-info<br>  Modify the conf-info <code>conf-info-template.yml</code>. The meaning of each option see <a href="http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html" target="_blank">here</a>.</p>
+</li>
+<li><p>Generate the configuration directory</p>
+<pre><code>  python -m confgenerator.cli [conf-info path] -d [configuration path]
+</code></pre><ul>
+<li>[conf-info path] : the path of conf-info file.</li>
+<li><p>[configuration path] : the directory path of generated configuration. (This is optional, the default path is <code>$PWD/dnsmasq_conf</code>) </p>
+<p>e.g,</p>
+<pre><code>python -m confgenerator.cli $PWD/conf-info-template.yml
+</code></pre><p>The configurations are generated in <code>$PWD/dnsmasq_conf/</code>. And <code>config.env</code> is generated in <code>$PWD/</code>.</p>
+</li>
 </ul>
-<p>e.g, generate dnsmasq configuration</p>
-<pre><code class="lang-bash">./gen_dns-server.sh 123.45.67.89 12340 12350
-</code></pre>
-<p>You can validate the result by <code>cat dns-server.conf</code>, with successful output similar with the following,</p>
-<pre><code>server=123.45.67.89#12340
-server=123.45.67.89#12341
-server=123.45.67.89#12342
-server=123.45.67.89#12343
-server=123.45.67.89#12344
-server=123.45.67.89#12345
-server=123.45.67.89#12346
-server=123.45.67.89#12347
-server=123.45.67.89#12348
-server=123.45.67.89#12349
-server=123.45.67.89#12350
-</code></pre>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -301,7 +292,7 @@ server=123.45.67.89#12350
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOYMENT.md","ref":"usage/DEPLOYMENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF.md","mtime":"2018-10-17T16:25:47.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T16:51:01.266Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOYMENT.md","ref":"usage/DEPLOYMENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF.md","mtime":"2018-10-30T11:12:58.816Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T11:32:34.917Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

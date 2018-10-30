@@ -234,17 +234,23 @@
 <span class="hljs-built_in">cd</span> dnsmasq-imageAPI-[ARCH]
 </code></pre>
 <h3 id="generate-the-docker-compose-file">Generate the docker compose file</h3>
-<p>Docker compose file is used for dnsmasq deployment. Its generation requires three parameters:</p>
+<p>Docker compose file is used for dnsmasq deployment. Its generation requires two parameters:</p>
 <ul>
-<li>[CONF_PATH] : The absolute path to configuration directory.  </li>
-<li>[LOG_PATH] : The absolute path for storage generated log. This path will be created if it is not existed.  </li>
+<li>[CONFIG_ENV] : The absolute path to config environment file.   </li>
 <li>[COMP_NAME] : The name of this compose file. This name is used to control the service. Must be <strong>uniqueness</strong>.</li>
 </ul>
-<pre><code class="lang-bash">make config CONF=[CONF_PATH] LOG=[LOG_PATH] NAME=[COMP_NAME]
+<p>A env file looks like below.</p>
+<pre><code># config.env
+CONF_DIR=[CONFIG_PATH]
+</code></pre><pre><code class="lang-bash">make config CONFIG_ENV=[ENV_PATH] NAME=[COMP_NAME]
 </code></pre>
-<p>e.g : Generate a compose file named <code>dns.yml</code> with the configuration in <code>~/dnsmasq_conf/</code> and log generated into <code>~/dnsmasq_log/</code>.</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/dnsmasq-x86/
-make config CONF=~/dnsmasq_conf/ LOG=~/dnsmasq_<span class="hljs-built_in">log</span>/ NAME=dns
+<p>e.g : Generate a compose file named <code>dns.yml</code> with the configuration in <code>~/dnsmasq_conf/</code>.
+Firstly, write the env file likes below:</p>
+<pre><code># config.env
+CONF_DIR=~/dnsmasq_conf/
+</code></pre><p>Then, generate compose file. </p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> dnsmasq-imageAPI-x86/
+make config CONFIG_ENV=~/config.env NAME=dns
 </code></pre>
 <p>Therefore a compose file named <code>dns.yml</code> is generated in <code>~/dnsmasq-imageAPI-x86/compose/</code>.</p>
 <pre><code class="lang-yaml"><span class="hljs-comment"># dns.yml</span>
@@ -256,14 +262,8 @@ make config CONF=~/dnsmasq_conf/ LOG=~/dnsmasq_<span class="hljs-built_in">log</
 <span class="hljs-attr">    network_mode:</span> host
 <span class="hljs-attr">    restart:</span> always
 <span class="hljs-attr">    volumes:</span>
-<span class="hljs-attr">    - source:</span> ~/dnsmasq_conf/dnsmasq
-<span class="hljs-attr">      target:</span> /etc/dnsmasq
-<span class="hljs-attr">      type:</span> bind
-<span class="hljs-attr">    - source:</span> ~/dnsmasq_conf/dnsmasq.d
+<span class="hljs-attr">    - source:</span> ~/dnsmasq_conf/
 <span class="hljs-attr">      target:</span> /etc/dnsmasq.d
-<span class="hljs-attr">      type:</span> bind
-<span class="hljs-attr">    - source:</span> ~/dnsmasq_log
-<span class="hljs-attr">      target:</span> /etc/dnsmasq_log
 <span class="hljs-attr">      type:</span> bind
 <span class="hljs-attr">version:</span> <span class="hljs-string">&apos;3.2&apos;</span>
 </code></pre>
@@ -378,7 +378,7 @@ Name   Command   State   Ports
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"3.2","depth":1,"previous":{"title":"Generate configuration","level":"3.1","depth":1,"path":"usage/GENCONF.md","ref":"usage/GENCONF.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOYMENT.md","mtime":"2018-10-17T16:49:00.441Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T16:51:01.266Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Deployment","level":"3.2","depth":1,"previous":{"title":"Generate configuration","level":"3.1","depth":1,"path":"usage/GENCONF.md","ref":"usage/GENCONF.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/DEPLOYMENT.md","mtime":"2018-10-30T11:30:11.647Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T11:32:34.917Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
