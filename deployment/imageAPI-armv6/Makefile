@@ -31,10 +31,10 @@ status_compose_log: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs
 
 status_dnsmasq_log: $(COMP_DIR)/$(NAME).yml
-	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec cat dhcp.leases
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dhcp.leases
 
 status_dnsmasq_dhcp: $(COMP_DIR)/$(NAME).yml
-	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec cat dnsmasq.log
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dnsmasq.log
 
 status: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp	
 
