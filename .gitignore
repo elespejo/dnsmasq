@@ -3,3 +3,6 @@
 
 # compose file
 deployment/**/compose/*
+
+# python cache
+__pycache__
