@@ -26,31 +26,18 @@ unzip dnsmasq-confgenerator-0.5.6.zip
 
 ### Generate configuration
 
-```bash
-cd dnsmasq-confgenerator
-./gen_dns-server.sh [SERVER_IP] [START_PORT] [END_PORT]
-```
-in which,
-* [SERVER_IP]: the public ip of your dns server  
-* [START_PORT]: the start port for resolve domain 
-* [END_PORT]: the end port for resolve domain 
+* Modify the conf-info  
+    Modify the conf-info `conf-info-template.yml`. The meaning of each option see [here](http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
 
-e.g, generate dnsmasq configuration
-```bash
-./gen_dns-server.sh 123.45.67.89 12340 12350
-``` 
+* Generate the configuration directory
+    ```
+    python -m confgenerator.cli [conf-info path] -d [configuration path]
+    ```
+    * [conf-info path] : the path of conf-info file.
+    * [configuration path] : the directory path of generated configuration. (This is optional, the default path is `$PWD/dnsmasq_conf`) 
 
-You can validate the result by `cat dns-server.conf`, with successful output similar with the following,
-```
-server=123.45.67.89#12340
-server=123.45.67.89#12341
-server=123.45.67.89#12342
-server=123.45.67.89#12343
-server=123.45.67.89#12344
-server=123.45.67.89#12345
-server=123.45.67.89#12346
-server=123.45.67.89#12347
-server=123.45.67.89#12348
-server=123.45.67.89#12349
-server=123.45.67.89#12350
-```
+    e.g,
+    ```
+    python -m confgenerator.cli $PWD/conf-info-template.yml
+    ```
+    The configurations are generated in `$PWD/dnsmasq_conf/`. And `config.env` is generated in `$PWD/`.
