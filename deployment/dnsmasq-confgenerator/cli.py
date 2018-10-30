@@ -3,7 +3,7 @@
 import os
 import yaml
 import argparse
-import dnsconfgenerator.generator.generator as gen
+import dnsmasq-confgenerator.generator.generator as gen
 
 pwd = os.path.dirname(os.path.realpath(__file__))
 

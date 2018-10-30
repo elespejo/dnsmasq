@@ -26,7 +26,7 @@ clean-image:
 
 DEPLOYMENT_x86=$(DEPLOYMENT)/imageAPI-x86
 DEPLOYMENT_armv6=$(DEPLOYMENT)/imageAPI-armv6
-CONF_GENERATOR=$(DEPLOYMENT)/dnsconfgenerator
+CONF_GENERATOR=$(DEPLOYMENT)/dnsmasq-confgenerator
 
 mk-confgenerator: $(CONF_GENERATOR)
 	mkdir $(REPO)-confgenerator
