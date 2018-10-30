@@ -19,3 +19,7 @@ info_dict = yaml.load(open(info, 'r'))
 for key, val in info_dict.items():
     generator = getattr(gen, "Gen_"+key.replace('-', '_'))
     generator(val, path).write()
+
+f = open(pwd+'/../config.env', 'w')
+f.write("CONF_DIR="+pwd+'/../dnsmasq_conf')
+f.close
