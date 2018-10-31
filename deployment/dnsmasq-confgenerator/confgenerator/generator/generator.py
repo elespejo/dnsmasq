@@ -20,8 +20,8 @@ class Gen_dns_server(basic.basic):
     """Generate dns server configuration."""
     def write(self):
         f = open(self.file, 'a')
-        f.write("no resolve\n")
-        f.write("no hosts\n")
+        f.write("no-resolv\n")
+        f.write("no-hosts\n")
         for server in self.value_list:
             ip = server['ip']
             start_port = server['ports']['start-port']
