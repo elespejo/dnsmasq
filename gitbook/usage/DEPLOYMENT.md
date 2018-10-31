@@ -29,16 +29,11 @@ cd dnsmasq-imageAPI-[ARCH]
 ### Generate the docker compose file
 
 Docker compose file is used for dnsmasq deployment. Its generation requires two parameters:
-* [CONFIG_ENV] : The absolute path to config environment file.   
+* [CONFIG] : The absolute path of the configuration that is specified when generate configuration.   
 * [COMP_NAME] : The name of this compose file. This name is used to control the service. Must be **uniqueness**.
 
-A env file looks like below.
-```
-# config.env
-CONF_DIR=[CONFIG_PATH]
-```
 ```bash
-make config CONFIG_ENV=[ENV_PATH] NAME=[COMP_NAME]
+make config CONFIG=[PATH] NAME=[COMP_NAME]
 ```
 
 e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/`.

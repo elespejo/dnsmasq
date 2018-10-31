@@ -34,10 +34,10 @@ unzip dnsmasq-confgenerator-0.5.6.zip
     python -m confgenerator.cli [conf-info path] -d [configuration path]
     ```
     * [conf-info path] : the path of conf-info file.
-    * [configuration path] : the directory path of generated configuration. (This is optional, the default path is `$PWD/dnsmasq_conf`) 
+    * [configuration path] : the directory path of generated configuration. (This is optional, the default path is `$PWD/dnsmasq`) 
 
     e.g,
     ```
     python -m confgenerator.cli $PWD/conf-info-template.yml
     ```
-    The configurations are generated in `$PWD/dnsmasq_conf/`. And `config.env` is generated in `$PWD/`.
+    The configurations are generated in `$PWD/dnsmasq/`.
