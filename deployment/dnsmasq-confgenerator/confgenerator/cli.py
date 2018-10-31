@@ -16,14 +16,10 @@ args = vars(parser.parse_args())
 info = args['conf-info']
 path = args['path']
 
-os.makedirs(path+'/dnsmasq_conf')
-copy(pwd+'/accelerated-domains.china.conf', path+'/dnsmasq_conf')
+os.makedirs(path)
+copy(pwd+'/accelerated-domains.china.conf', path)
 
 info_dict = yaml.load(open(info, 'r'))
 for key, val in info_dict.items():
     generator = getattr(gen, "Gen_"+key.replace('-', '_'))
-    generator(val, path+'/dnsmasq_conf').write()
-
-f = open(path+'/dns-config.env', 'w')
-f.write("CONF_DIR="+path+'/dnsmasq_conf')
-f.close
+    generator(val, path).write()
