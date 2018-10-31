@@ -5,7 +5,7 @@ ENV=$(CURDIR)/.env
 .PHONY: config
 config: $(ENV_TEMP) $(CONFIG_ENV)
 	cp $(ENV_TEMP) $(ENV)
-	cat $(CONFIG)/dns-config.env >> $(ENV)
+	echo "CONF_DIR=$(CONFIG)" >> $(ENV)
 	cat $(ENV)
 	mkdir -p $(COMP_DIR)
 	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
