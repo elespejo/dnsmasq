@@ -37,15 +37,9 @@ make config CONFIG=[PATH] NAME=[COMP_NAME]
 ```
 
 e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/`.
-Firstly, write the env file likes below:
-```
-# config.env
-CONF_DIR=~/dnsmasq_conf/
-```
-Then, generate compose file. 
 ```bash
 cd dnsmasq-imageAPI-x86/
-make config CONFIG_ENV=~/config.env NAME=dns
+make config CONFIG_ENV=~/dnsmasq_conf/ NAME=dns
 ```
 Therefore a compose file named `dns.yml` is generated in `~/dnsmasq-imageAPI-x86/compose/`.
 ```yaml
