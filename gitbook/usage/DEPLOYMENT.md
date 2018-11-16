@@ -8,21 +8,21 @@ You can download the deployment package from web page or command line.
 Go to the [release page](https://github.com/elespejo/dnsmasq/releases) of this project. Select the package according to the architecture of your machine.
 
 * From command line:  
-```bash
-wget https://github.com/elespejo/dnsmasq/releases/download/[VERSION]/dnsmasq-[ARCH]-[VERSION].zip
-```
-  * VERSION : the release tag  
-  * ARCH : the architecture of your machine 
-
-  e.g : Deploy a dnsmasq on a x86 machine with the release 0.5.6 by executing
   ```bash
-  wget https://github.com/elespejo/dnsmasq/releases/download/0.5.6/dnsmasq-x86-0.5.6.zip
+  wget https://github.com/elespejo/dnsmasq/releases/download/[VERSION]/dnsmasq-imageAPI-[ARCH]-[VERSION].zip
+  ```
+    * VERSION : the release tag  
+    * ARCH : the architecture of your machine 
+
+  e.g : Deploy a dnsmasq on a x86 machine with the release 0.7.6 by executing
+  ```bash
+  wget https://github.com/elespejo/dnsmasq/releases/download/0.7.6/dnsmasq-imageAPI-x86-0.7.6.zip
   ```
 
 ### Unzip
 
 ```bash
-unzip dnsmasq-[ARCH]-[VERSION].zip
+unzip dnsmasq-imageAPI-[ARCH]-[VERSION].zip
 cd dnsmasq-imageAPI-[ARCH]
 ```
 
@@ -39,7 +39,7 @@ make config CONFIG=[PATH] NAME=[COMP_NAME]
 e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/`.
 ```bash
 cd dnsmasq-imageAPI-x86/
-make config CONFIG_ENV=~/dnsmasq_conf/ NAME=dns
+make config CONFIG=~/dnsmasq_conf/ NAME=dns
 ```
 Therefore a compose file named `dns.yml` is generated in `~/dnsmasq-imageAPI-x86/compose/`.
 ```yaml
@@ -48,7 +48,7 @@ services:
   router_dnsmasq:
     cap_add:
     - NET_ADMIN
-    image: elespejo/dnsmasq-x86:0.5.6
+    image: elespejo/dnsmasq-x86:0.7.6
     network_mode: host
     restart: always
     volumes:
@@ -71,13 +71,13 @@ make start NAME=dns
 After starting the service successfully, you may see the output similar with the following: 
 ```
 docker-compose -p dns -f ~/dnsmasq-imageAPI-x86/compose/dns.yml up -d
-Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.5.6)...
-0.5.6: Pulling from elespejo/dnsmasq-x86
+Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.7.6)...
+0.7.6: Pulling from elespejo/dnsmasq-x86
 4fe2ade4980c: Already exists
 5a492975f351: Pull complete
 070fe1f3f59a: Pull complete
 Digest: sha256:f4682be5a4eb5b740d865eef6bb79f537410739f233e495292f09ffeba1b6344
-Status: Downloaded newer image for elespejo/dnsmasq-x86:0.5.6
+Status: Downloaded newer image for elespejo/dnsmasq-x86:0.7.6
 Creating dns_router_dnsmasq_1 ... done
 ```
 

@@ -10,9 +10,9 @@ You can download the generator package from web page or command line.
     ```bash
     wget https://github.com/elespejo/dnsmasq/releases/download/[VERSION]/dnsmasq-confgenerator-[VERSION].zip
     ```
-    e.g, download configuration generator of version 0.5.6
+    e.g, download configuration generator of version 0.7.6
     ```bash
-    wget https://github.com/elespejo/dnsmasq/releases/download/0.5.6/dnsmasq-confgenerator-0.5.6.zip
+    wget https://github.com/elespejo/dnsmasq/releases/download/0.7.6/dnsmasq-confgenerator-0.7.6.zip
     ```
 
 ### Unzip
@@ -21,13 +21,13 @@ unzip dnsmasq-confgenerator-[VERSION].zip
 ```
 e.g,
 ```bash
-unzip dnsmasq-confgenerator-0.5.6.zip
+unzip dnsmasq-confgenerator-0.7.6.zip
 ```
 
 ### Generate configuration
 
 * Modify the conf-info  
-    Modify the conf-info `conf-info-template.yml`. The meaning of each option see [here](http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
+    Modify the conf-info `dnsmasq-info.yml`. The meaning of each option see [here](http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
 
 * Generate the configuration directory
     ```
@@ -38,6 +38,6 @@ unzip dnsmasq-confgenerator-0.5.6.zip
 
     e.g,
     ```
-    python -m confgenerator.cli $PWD/conf-info-template.yml
+    python -m confgenerator.cli $PWD/dnsmasq-info.yml
     ```
     The configurations are generated in `$PWD/dnsmasq/`.
