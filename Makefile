@@ -38,14 +38,14 @@ mk-deployment-x86: $(DEPLOYMENT_x86)
 	mkdir $(REPO)-imageAPI-x86
 	cp $(DEPLOYMENT_x86)/docker-compose.yml $(DEPLOYMENT_x86)/temp.env $(DEPLOYMENT_x86)/Makefile $(REPO)-imageAPI-x86/
 	sed -i s+VERSION=latest.*+VERSION=$(VERSION)+g $(REPO)-imageAPI-x86/temp.env
-	zip -r $(REPO)-x86-$(VERSION).zip $(REPO)-imageAPI-x86
+	zip -r $(REPO)-imageAPi-x86-$(VERSION).zip $(REPO)-imageAPI-x86
 	rm -rf $(REPO)-imageAPI-x86
 
 mk-deployment-armv6: $(DEPLOYMENT_armv6)
 	mkdir $(REPO)-imageAPI-armv6
 	cp $(DEPLOYMENT_armv6)/docker-compose.yml $(DEPLOYMENT_armv6)/temp.env $(DEPLOYMENT_armv6)/Makefile $(REPO)-imageAPI-armv6/
 	sed -i s+VERSION=latest.*+VERSION=$(VERSION)+g $(REPO)-imageAPI-armv6/temp.env
-	zip -r $(REPO)-armv6-$(VERSION).zip $(REPO)-imageAPI-armv6
+	zip -r $(REPO)-imageAPi-armv6-$(VERSION).zip $(REPO)-imageAPI-armv6
 	rm -rf $(REPO)-imageAPI-armv6
 
 mk-deployment: mk-deployment-x86 mk-deployment-armv6 mk-confgenerator
