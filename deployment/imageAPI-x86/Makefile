@@ -3,7 +3,7 @@ ENV_TEMP=$(CURDIR)/temp.env
 ENV=$(CURDIR)/.env
 
 .PHONY: config
-config: $(CONFIG_ENV) $(ENV_TEMP)
+config: $(CONFIG) $(ENV_TEMP)
 	cp $(ENV_TEMP) $(ENV)
 	echo "CONF_DIR=$(CONFIG)" >> $(ENV)
 	cat $(ENV)
