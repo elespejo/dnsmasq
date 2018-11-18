@@ -9,11 +9,11 @@ import confgenerator.generator.generator as gen
 pwd = os.path.dirname(os.path.realpath(__file__))
 
 parser = argparse.ArgumentParser(description='Generate the dnsmasq configuration.')
-parser.add_argument('conf-info')
+parser.add_argument('-f', dest='info')
 parser.add_argument('-d', '--destination', dest='path', default=pwd+'/../dnsmasq')
 
 args = vars(parser.parse_args())
-info = args['conf-info']
+info = args['info']
 path = args['path']
 
 os.makedirs(path)
