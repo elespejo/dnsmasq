@@ -6,7 +6,7 @@ cache-size: 3000
 
 domain: powter
 
-local: /powter
+local: /powter/
 
 dns-server:
   - ip: 1.1.1.1
