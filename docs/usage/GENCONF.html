@@ -222,8 +222,8 @@
 <li><p>From command line:  </p>
 <pre><code class="lang-bash">  wget https://github.com/elespejo/dnsmasq/releases/download/[VERSION]/dnsmasq-confgenerator-[VERSION].zip
 </code></pre>
-<p>  e.g, download configuration generator of version 0.7.6</p>
-<pre><code class="lang-bash">  wget https://github.com/elespejo/dnsmasq/releases/download/0.7.6/dnsmasq-confgenerator-0.7.6.zip
+<p>  e.g, download configuration generator of version 0.8.2</p>
+<pre><code class="lang-bash">  wget https://github.com/elespejo/dnsmasq/releases/download/0.8.2/dnsmasq-confgenerator-0.8.2.zip
 </code></pre>
 </li>
 </ul>
@@ -231,19 +231,46 @@
 <pre><code class="lang-bash">unzip dnsmasq-confgenerator-[VERSION].zip
 </code></pre>
 <p>e.g,</p>
-<pre><code class="lang-bash">unzip dnsmasq-confgenerator-0.7.6.zip
+<pre><code class="lang-bash">unzip dnsmasq-confgenerator-0.8.2.zip
+<span class="hljs-built_in">cd</span> dnsmasq-confgenerator/
 </code></pre>
 <h3 id="generate-configuration">Generate configuration</h3>
 <ul>
-<li><p>Modify the conf-info<br>  Modify the conf-info <code>dnsmasq-info.yml</code>. The meaning of each option see <a href="http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html" target="_blank">here</a>.</p>
+<li><p>Modify the conf-info<br>  The template conf-info is the <code>dnsmasq-info.yml</code> in unzipped confgenerator package.</p>
+<pre><code class="lang-bash">  ls dnsmasq-confgenerator/
+  confgenerator  dnsmasq-info.yml
+</code></pre>
+<p>  Modify the conf-info <code>dnsmasq-info.yml</code>. The meaning of each option see <a href="http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html" target="_blank">here</a>.</p>
+<pre><code class="lang-yaml">  <span class="hljs-comment"># dnsmasq-info.yml</span>
+<span class="hljs-attr">  dhcp-range:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.5</span>,<span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.150</span>,<span class="hljs-number">12</span>h
+
+<span class="hljs-attr">  dhcp-option:</span> <span class="hljs-number">6</span>,<span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
+
+<span class="hljs-attr">  cache-size:</span> <span class="hljs-number">3000</span>
+
+<span class="hljs-attr">  domain:</span> powter
+
+<span class="hljs-attr">  local:</span> /powter/
+
+<span class="hljs-attr">  dns-server:</span>
+<span class="hljs-attr">    - ip:</span> <span class="hljs-number">1.1</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>
+<span class="hljs-attr">      ports:</span>
+<span class="hljs-attr">        start-port:</span> <span class="hljs-number">16350</span>
+<span class="hljs-attr">        end-port:</span> <span class="hljs-number">16370</span>
+
+<span class="hljs-attr">    - ip:</span> <span class="hljs-number">2.2</span><span class="hljs-number">.2</span><span class="hljs-number">.2</span>
+<span class="hljs-attr">      ports:</span>
+<span class="hljs-attr">        start-port:</span> <span class="hljs-number">16350</span>
+<span class="hljs-attr">        end-port:</span> <span class="hljs-number">16370</span>
+</code></pre>
 </li>
 <li><p>Generate the configuration directory</p>
-<pre><code>  python -m confgenerator.cli [conf-info path] -d [configuration path]
+<pre><code>  python -m confgenerator.cli -f [conf-info path] -d [configuration path]
 </code></pre><ul>
-<li>[conf-info path] : the path of conf-info file.</li>
+<li>[conf-info path] : the absolute path of conf-info file.</li>
 <li><p>[configuration path] : the directory path of generated configuration. (This is optional, the default path is <code>$PWD/dnsmasq</code>) </p>
 <p>e.g,</p>
-<pre><code>python -m confgenerator.cli $PWD/dnsmasq-info.yml
+<pre><code>python -m confgenerator.cli -f $PWD/dnsmasq-info.yml
 </code></pre><p>The configurations are generated in <code>$PWD/dnsmasq/</code>.</p>
 </li>
 </ul>
@@ -292,7 +319,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOYMENT.md","ref":"usage/DEPLOYMENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF.md","mtime":"2018-11-16T07:52:02.874Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T08:04:38.473Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Generate configuration","level":"3.1","depth":1,"next":{"title":"Deployment","level":"3.2","depth":1,"path":"usage/DEPLOYMENT.md","ref":"usage/DEPLOYMENT.md","articles":[]},"previous":{"title":"Dependency","level":"2.2","depth":1,"path":"usage/DEPENDENCY.md","ref":"usage/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/GENCONF.md","mtime":"2018-11-19T02:03:21.794Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T02:11:29.312Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

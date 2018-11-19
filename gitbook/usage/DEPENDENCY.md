@@ -5,3 +5,10 @@
 2. Install `docker-compose` command :  
   * x86 : docker-compose 1.22.0 [reference](https://docs.docker.com/compose/install/)  
   * armv6 : `pip install docker-compose`
+
+3. Install python > 3.5
+
+4. Install python module `yaml`:
+    ```bash
+    pip install pyyaml
+    ```

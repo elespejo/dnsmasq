@@ -14,26 +14,26 @@ Go to the [release page](https://github.com/elespejo/dnsmasq/releases) of this p
     * VERSION : the release tag  
     * ARCH : the architecture of your machine 
 
-  e.g : Deploy a dnsmasq on a x86 machine with the release 0.7.6 by executing
+  e.g : Deploy a dnsmasq on a x86 machine with the release 0.8.2 by executing
   ```bash
-  wget https://github.com/elespejo/dnsmasq/releases/download/0.7.6/dnsmasq-imageAPI-x86-0.7.6.zip
+  wget https://github.com/elespejo/dnsmasq/releases/download/0.8.2/dnsmasq-imageAPI-x86-0.8.2.zip
   ```
 
 ### Unzip
 
 ```bash
 unzip dnsmasq-imageAPI-[ARCH]-[VERSION].zip
-cd dnsmasq-imageAPI-[ARCH]
+cd dnsmasq-imageAPI-[ARCH]/
 ```
 
 ### Generate the docker compose file
 
 Docker compose file is used for dnsmasq deployment. Its generation requires two parameters:
 * [CONFIG] : The absolute path of the configuration that is specified when generate configuration.   
-* [COMP_NAME] : The name of this compose file. This name is used to control the service. Must be **uniqueness**.
+* [NAME] : The name of compose file. This name is used to control the service. Must be **uniqueness**.
 
 ```bash
-make config CONFIG=[PATH] NAME=[COMP_NAME]
+make config CONFIG=[PATH] NAME=[NAME]
 ```
 
 e.g : Generate a compose file named `dns.yml` with the configuration in `~/dnsmasq_conf/`.
@@ -48,7 +48,7 @@ services:
   router_dnsmasq:
     cap_add:
     - NET_ADMIN
-    image: elespejo/dnsmasq-x86:0.7.6
+    image: elespejo/dnsmasq-x86:0.8.2
     network_mode: host
     restart: always
     volumes:
@@ -61,7 +61,7 @@ version: '3.2'
 ### Start the service
 Start the service with the name you specified in the config step above.
 ```bash 
-make start NAME=[COMP_NAME]
+make start NAME=[NAME]
 ```
 e.g: start service `dns`
 ```bash
@@ -71,19 +71,19 @@ make start NAME=dns
 After starting the service successfully, you may see the output similar with the following: 
 ```
 docker-compose -p dns -f ~/dnsmasq-imageAPI-x86/compose/dns.yml up -d
-Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.7.6)...
-0.7.6: Pulling from elespejo/dnsmasq-x86
+Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.8.2)...
+0.8.2: Pulling from elespejo/dnsmasq-x86
 4fe2ade4980c: Already exists
 5a492975f351: Pull complete
 070fe1f3f59a: Pull complete
 Digest: sha256:f4682be5a4eb5b740d865eef6bb79f537410739f233e495292f09ffeba1b6344
-Status: Downloaded newer image for elespejo/dnsmasq-x86:0.7.6
+Status: Downloaded newer image for elespejo/dnsmasq-x86:0.8.2
 Creating dns_router_dnsmasq_1 ... done
 ```
 
 ### Restart the service
 ```bash
-make restart NAME=[COMP_NAME]
+make restart NAME=[NAME]
 ```
 e.g
 ```bash
@@ -97,7 +97,7 @@ Recreating dns_router_dnsmasq_1 ... done
 
 ### Check status of the service
 ```bash
-make status NAME=[COMP_NAME]
+make status NAME=[NAME]
 ```
 e.g,
 ```bash
@@ -117,7 +117,7 @@ router_dnsmasq_1  | ...
 
 ### Stop the service
 ```bash
-make stop NAME=[COMP_NAME]
+make stop NAME=[NAME]
 ```
 e.g,
 ```bash
@@ -145,7 +145,7 @@ Name   Command   State   Ports
 
 ### Remove the compose file
 ```bash
-make remove NAME=[COMP_NAME]
+make remove NAME=[NAME]
 ```
 e.g,
 ```bash
