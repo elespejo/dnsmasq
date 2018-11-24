@@ -13,7 +13,7 @@ config: $(CONFIG) $(ENV_TEMP)
 
 .PHONY: test_config
 test_config:
-        docker-compose -f $(COMP_DIR)/$(NAME).yml config
+	docker-compose -f $(COMP_DIR)/$(NAME).yml config
 
 .PHONY: start
 start: $(COMP_DIR)/$(NAME).yml
