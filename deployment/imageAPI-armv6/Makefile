@@ -2,7 +2,7 @@ COMP_DIR=$(CURDIR)/compose
 ENV_TEMP=$(CURDIR)/temp.env
 ENV=$(CURDIR)/.env
 
-.PHONY: config
+.PHONY: config test_config
 config: $(ENV_TEMP) $(CONFIG)
 	cp $(ENV_TEMP) $(ENV)
 	echo "CONF_DIR=$(CONFIG)" >> $(ENV)
@@ -10,22 +10,23 @@ config: $(ENV_TEMP) $(CONFIG)
 	mkdir -p $(COMP_DIR)
 	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
 	rm $(ENV)
-
-.PHONY: test_config
 test_config:
 	docker-compose -f $(COMP_DIR)/$(NAME).yml config
 
-.PHONY: start
+.PHONY: start test_start
 start: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d 
+test_start: status
 
-.PHONY: stop
+.PHONY: stop test_stop
 stop: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml down
+test_stop: status
 
-.PHONY: restart
+.PHONY: restart test_restart
 restart: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d --force-recreate
+test_restart: status
 
 .PHONY: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp
 status_compose_ps: $(COMP_DIR)/$(NAME).yml
@@ -46,7 +47,8 @@ status: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_d
 list: $(COMP_DIR)
 	for compose in `ls $(COMP_DIR)`;do name=`echo $$compose|awk -F "." '{print $$1}'`;echo $$name;docker-compose -p $$name -f $(COMP_DIR)/$$compose ps;done
 
-.PHONY: remove
+.PHONY: remove test_remove
 remove: $(COMP_DIR)/$(NAME).yml
 	rm $(COMP_DIR)/$(NAME).yml
-	ls $(COMP_DIR) | grep $(NAME)
+test_remove:
+	((test -e $(COMP_DIR)/$(NAME).yml) && echo "$(NAME).yml exists.") || echo "$(NAME).yml does NOT exists."
