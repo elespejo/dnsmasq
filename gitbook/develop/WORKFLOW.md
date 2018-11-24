@@ -17,6 +17,7 @@ This action build a docker image named `elespejo/sskcp-[arch]:latest` by using t
 ```bash
 make clean-image ARCH=[arch]
 ```
+This action remove the docker image named `elespejo/sskcp-[arch]:latest`.
 
 ### Build dnsmasq x86 image API
 ```bash
