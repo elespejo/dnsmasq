@@ -11,6 +11,10 @@ config: $(ENV_TEMP) $(CONFIG)
 	docker-compose -p $(NAME) -f $(CURDIR)/docker-compose.yml config | tee $(COMP_DIR)/$(NAME).yml
 	rm $(ENV)
 
+.PHONY: test_config
+test_config:
+        docker-compose -f $(COMP_DIR)/$(NAME).yml config
+
 .PHONY: start
 start: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml up -d 
@@ -34,7 +38,7 @@ status_dnsmasq_log: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dhcp.leases || true
 
 status_dnsmasq_dhcp: $(COMP_DIR)/$(NAME).yml
-	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dnsmasq.log || true
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dnsmasq.log | tail -n 100 || true
 
 status: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp	
 
@@ -45,3 +49,4 @@ list: $(COMP_DIR)
 .PHONY: remove
 remove: $(COMP_DIR)/$(NAME).yml
 	rm $(COMP_DIR)/$(NAME).yml
+	ls $(COMP_DIR) | grep $(NAME)
