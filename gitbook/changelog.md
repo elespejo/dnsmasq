@@ -1,9 +1,13 @@
-# 0.8.4: Add test interface
+# 0.8.6: Add test interface
 
 ### Update imageAPI:
 1. add target 'test_config' to validate compose file.
 2. only show the last 100 line of dnsmasq log.
-3. check if compose file exists after remove
+1. add target 'test_config'
+2. add target 'test_start'
+3. add target 'test_stop'
+4. add target 'test_restart'
+5. add target 'test_remove'
 
 ### Update gitbook:
 1. update version to 0.8.3
