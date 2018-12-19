@@ -18,3 +18,5 @@ dns-server:
     ports:
       start-port: 16350
       end-port: 16370
+
+dnsconf-dir: /home/USER/dnsconf

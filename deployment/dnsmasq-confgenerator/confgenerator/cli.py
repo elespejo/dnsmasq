@@ -16,10 +16,19 @@ args = vars(parser.parse_args())
 info = args['info']
 path = args['path']
 
+info_dict = yaml.load(open(info, 'r'))
+
 os.makedirs(path)
 copy(pwd+'/accelerated-domains.china.conf', path)
 
-info_dict = yaml.load(open(info, 'r'))
+# copy files from [dnsconf-dir] to [path]
+conf_dir=info_dict.pop('dnsconf-dir')
+files = os.listdir(conf_dir)
+for file in files:
+    full_file_name = os.path.join(conf_dir, file)
+    if (os.path.isfile(full_file_name)):
+        copy(full_file_name, path)
+
 for key, val in info_dict.items():
     generator = getattr(gen, "Gen_"+key.replace('-', '_'))
     generator(val, path).write()
