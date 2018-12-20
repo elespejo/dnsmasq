@@ -14,9 +14,9 @@ Go to the [release page](https://github.com/elespejo/dnsmasq/releases) of this p
     * VERSION : the release tag  
     * ARCH : the architecture of your machine 
 
-  e.g : Deploy a dnsmasq on a x86 machine with the release 0.8.6 by executing
+  e.g : Deploy a dnsmasq on a x86 machine with the release 0.8.7 by executing
   ```bash
-  wget https://github.com/elespejo/dnsmasq/releases/download/0.8.6/dnsmasq-imageAPI-x86-0.8.6.zip
+  wget https://github.com/elespejo/dnsmasq/releases/download/0.8.7/dnsmasq-imageAPI-x86-0.8.7.zip
   ```
 
 ### Unzip
@@ -48,7 +48,7 @@ services:
   router_dnsmasq:
     cap_add:
     - NET_ADMIN
-    image: elespejo/dnsmasq-x86:0.8.6
+    image: elespejo/dnsmasq-x86:0.8.7
     network_mode: host
     restart: always
     volumes:
@@ -75,13 +75,13 @@ make start NAME=dns
 After starting the service successfully, you may see the output similar with the following: 
 ```
 docker-compose -p dns -f ~/dnsmasq-imageAPI-x86/compose/dns.yml up -d
-Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.8.6)...
-0.8.6: Pulling from elespejo/dnsmasq-x86
+Pulling router_dnsmasq (elespejo/dnsmasq-x86:0.8.7)...
+0.8.7: Pulling from elespejo/dnsmasq-x86
 4fe2ade4980c: Already exists
 5a492975f351: Pull complete
 070fe1f3f59a: Pull complete
 Digest: sha256:f4682be5a4eb5b740d865eef6bb79f537410739f233e495292f09ffeba1b6344
-Status: Downloaded newer image for elespejo/dnsmasq-x86:0.8.6
+Status: Downloaded newer image for elespejo/dnsmasq-x86:0.8.7
 Creating dns_router_dnsmasq_1 ... done
 ```
 

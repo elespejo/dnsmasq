@@ -1,3 +1,14 @@
+# 0.8.7: Add dnsconf-dir to info
+
+### Update confgenerator:
+1. add setting `dnsconf-dir`
+2. update conf generator
+
+### Update gitbook:
+1. update GENCONF.md
+2. update version
+
+
 # 0.8.6: Add test interface
 
 ### Update imageAPI:

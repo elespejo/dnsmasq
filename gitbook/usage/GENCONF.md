@@ -10,9 +10,9 @@ You can download the generator package from web page or command line.
     ```bash
     wget https://github.com/elespejo/dnsmasq/releases/download/[VERSION]/dnsmasq-confgenerator-[VERSION].zip
     ```
-    e.g, download configuration generator of version 0.8.6
+    e.g, download configuration generator of version 0.8.7
     ```bash
-    wget https://github.com/elespejo/dnsmasq/releases/download/0.8.6/dnsmasq-confgenerator-0.8.6.zip
+    wget https://github.com/elespejo/dnsmasq/releases/download/0.8.7/dnsmasq-confgenerator-0.8.7.zip
     ```
 
 ### Unzip
@@ -21,7 +21,7 @@ unzip dnsmasq-confgenerator-[VERSION].zip
 ```
 e.g,
 ```bash
-unzip dnsmasq-confgenerator-0.8.6.zip
+unzip dnsmasq-confgenerator-0.8.7.zip
 cd dnsmasq-confgenerator/
 ```
 
@@ -56,6 +56,8 @@ cd dnsmasq-confgenerator/
         ports:
           start-port: 16350
           end-port: 16370
+
+    dnsconf-dir: /home/USER/dnsconf
     ```
 
 * Generate the configuration directory
