@@ -11,12 +11,15 @@ make -f manage_dev.mk build_dev_env_x86
 ```
 
 * Generate configuration 
-Update `USER` in testflow/script/build_pkg/dnsmasq-confgenerator/dnsmasq-info.yml
+
+	Update `USER` in testflow/script/build_pkg/dnsmasq-confgenerator/dnsmasq-info.yml, add a new directory according to dnsconf-dir setting
 ```
 make -f manage_dev.mk gen_proj_conf 
 ```
 
 * Run test cases
+
+	**Please run `sudo systemctl stop systemd-resolved.service` if ubuntu 18.04 is used for testing**
 ```
 make -f dev.mk test_install
 make -f dev.mk test_reinstall
