@@ -28,7 +28,6 @@ testflow_restart:
 testflow_list:
 	make -s -f basic.mk hint CONTENT="make list"
 	make -C ${IMG_PKG} list
-	make -C ${IMG_PKG} test_list NAME=dns
 	make -s -f basic.mk confirm
 .PHONY: testflow_remove
 testflow_remove:
