@@ -46,6 +46,4 @@ testflow_remove:
 testflow_status:
 	make -s -f basic.mk hint CONTENT="make status"
 	make -C ${IMG_PKG} status NAME=dns
-	make -s -f basic.mk hint CONTENT="make test_status"
-	make -C ${IMG_PKG} test_status NAME=dns
 	make -s -f basic.mk confirm

@@ -19,7 +19,7 @@ make -f manage_dev.mk gen_proj_conf
 
 * Run test cases
 
-	**Please run `sudo systemctl stop systemd-resolved.service` if ubuntu 18.04 is used for testing**
+	**Please run `sudo systemctl disable systemd-resolved.service` if ubuntu 18.04 is used for testing**
 ```
 make -f dev.mk test_install
 make -f dev.mk test_reinstall
@@ -27,9 +27,6 @@ make -f dev.mk test_reuninstall
 make -f dev.mk test_installafteruninstall
 make -f dev.mk test_reboot_p1
 make -f dev.mk test_reboot_p2
-make -f dev.mk test_poweroff_p1
-make -f dev.mk test_poweroff_p2
-make -f dev.mk test_update
 ```
 * Clean test environment
 ```
@@ -63,9 +60,6 @@ make -f dev.mk test_reuninstall
 make -f dev.mk test_installafteruninstall
 make -f dev.mk test_reboot_p1
 make -f dev.mk test_reboot_p2
-make -f dev.mk test_poweroff_p1
-make -f dev.mk test_poweroff_p2
-make -f dev.mk test_update
 ```
 
 
