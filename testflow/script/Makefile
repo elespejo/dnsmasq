@@ -3,7 +3,7 @@ include .env
 .PHONY: testflow_config
 testflow_config:
 	make -s -f basic.mk hint CONTENT="make config"
-	make -C ${IMG_PKG} config CONFIG=${PWD}/dnsconf NAME=dns
+	make -C ${IMG_PKG} config CONFIG=${PWD}/conf_gened NAME=dns
 	make -s -f basic.mk hint CONTENT="make test_config"
 	make -C ${IMG_PKG} test_config NAME=dns
 	make -s -f basic.mk confirm
@@ -46,4 +46,6 @@ testflow_remove:
 testflow_status:
 	make -s -f basic.mk hint CONTENT="make status"
 	make -C ${IMG_PKG} status NAME=dns
+	make -s -f basic.mk hint CONTENT="make test_status"
+	make -C ${IMG_PKG} test_status NAME=dns
 	make -s -f basic.mk confirm

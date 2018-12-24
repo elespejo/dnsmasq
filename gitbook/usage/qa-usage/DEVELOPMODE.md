@@ -12,7 +12,7 @@ make -f manage_dev.mk build_dev_env_x86
 
 * Generate configuration 
 
-	Update `USER` in testflow/script/build_pkg/dnsmasq-confgenerator/dnsmasq-info.yml, add a new directory according to dnsconf-dir setting
+	Update path for other_info in info.yml
 ```
 make -f manage_dev.mk gen_proj_conf 
 ```
