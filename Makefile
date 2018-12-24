@@ -56,7 +56,7 @@ clean-deployment: $(REPO)-$(VERSION).zip
 
 .PHONY: mk-testflow clean-testflow
 mk-testflow:
-	sed -i '/^expose PROJ_VERSION/c\export PROJ_VERSION=$(VERSION)' testflow/script/.env
+	sed -i '/^export PROJ_VERSION/c\export PROJ_VERSION=$(VERSION)' testflow/script/.env
 	cat testflow/script/.env | grep PROJ_VERSION 
 	cd testflow && zip -r ../$(REPO)-testflow-$(VERSION).zip script
 

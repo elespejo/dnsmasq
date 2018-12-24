@@ -10,3 +10,6 @@ __pycache__
 # test flow
 build_pkg
 dnsconf
+
+# Pckages
+*.zip
