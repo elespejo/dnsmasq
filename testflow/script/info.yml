@@ -19,4 +19,4 @@ dns-server:
       start-port: 16350
       end-port: 16370
 
-dnsconf-dir: ${PWD}/dnsconf
+dnsconf-dir: /PATH/TO/PWD/other_conf

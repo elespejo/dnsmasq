@@ -13,7 +13,8 @@ make -f manage_prod.mk set_img_pkg
 ```
 
 * Generate configuration 
-Create a info.yml file in current directory
+
+	Update a info.yml file in current directory
 ```
 make -f manage_prod.mk gen_proj_conf 
 ```
