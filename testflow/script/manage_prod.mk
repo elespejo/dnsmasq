@@ -4,7 +4,7 @@ CONF_DIR=projconf
 
 .PHONY: gen_proj_conf del_proj_conf read_proj_conf
 gen_proj_conf:
-	cd ${PROJECT}-confgenerator && python3 -m confgenerator.cli -f ${PWD}/${PROJECT}-info.yml -d ${PWD}/${CONF_DIR}
+	cd ${PROJECT}-confgenerator && python3 -m confgenerator.cli -f ${PWD}/info.yml -d ${PWD}/${CONF_DIR}
 	ls ${CONF_DIR}
 
 read_proj_conf:

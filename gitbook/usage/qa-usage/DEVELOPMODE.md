@@ -2,6 +2,7 @@
 ### Run test cases on x86
 * Set test project
 ```
+cd testflow/script
 make -f basic.mk set_proj TEST_PROJ=../..
 ```
 * Build image and packages locally
@@ -10,6 +11,7 @@ make -f manage_dev.mk build_dev_env_x86
 ```
 
 * Generate configuration 
+Update `USER` in testflow/script/build_pkg/dnsmasq-confgenerator/dnsmasq-info.yml
 ```
 make -f manage_dev.mk gen_proj_conf 
 ```
