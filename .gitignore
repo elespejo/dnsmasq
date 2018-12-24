@@ -9,7 +9,7 @@ __pycache__
 
 # test flow
 build_pkg
-dnsconf
+conf_gened
 
 # Pckages
 *.zip
