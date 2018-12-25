@@ -1,0 +1,417 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Development mode · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="PRODUCTIONMODE.html" />
+    
+    
+    <link rel="prev" href="../../develop/WORKFLOW.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Overview</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../TOPOLOGY.html">
+            
+                <a href="../TOPOLOGY.html">
+            
+                    
+                    Topology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../DEPENDENCY.html">
+            
+                <a href="../DEPENDENCY.html">
+            
+                    
+                    Dependency
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Deploy client</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../GENCONF.html">
+            
+                <a href="../GENCONF.html">
+            
+                    
+                    Generate configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../DEPLOYMENT.html">
+            
+                <a href="../DEPLOYMENT.html">
+            
+                    
+                    Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">For Developer</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../develop/WORKFLOW.html">
+            
+                <a href="../../develop/WORKFLOW.html">
+            
+                    
+                    work flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">For QA</li>
+        
+        
+    
+        <li class="chapter active" data-level="5.1" data-path="DEVELOPMODE.html">
+            
+                <a href="DEVELOPMODE.html">
+            
+                    
+                    Development mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="PRODUCTIONMODE.html">
+            
+                <a href="PRODUCTIONMODE.html">
+            
+                    
+                    Production mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../changelog.html">
+            
+                <a href="../../changelog.html">
+            
+                    
+                    change log
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Development mode</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="development-mode">Development mode</h1>
+<h3 id="run-test-cases-on-x86">Run test cases on x86</h3>
+<ul>
+<li>Set test project<pre><code>cd testflow/script
+make -f basic.mk set_proj TEST_PROJ=../..
+</code></pre></li>
+<li><p>Build image and packages locally</p>
+<pre><code>make -f manage_dev.mk build_dev_env_x86
+</code></pre></li>
+<li><p>Generate configuration </p>
+<p>  Update path for other_info in info.yml</p>
+<pre><code>make -f manage_dev.mk gen_proj_conf
+</code></pre></li>
+<li><p>Run test cases</p>
+<p>  <strong>Please run <code>sudo systemctl disable systemd-resolved.service</code> if ubuntu 18.04 is used for testing</strong></p>
+<pre><code>make -f dev.mk test_install
+make -f dev.mk test_reinstall
+make -f dev.mk test_reuninstall
+make -f dev.mk test_installafteruninstall
+make -f dev.mk test_reboot_p1
+make -f dev.mk test_reboot_p2
+</code></pre></li>
+<li>Clean test environment<pre><code>make -f manage_dev.mk clean_dev_env_x86
+</code></pre></li>
+</ul>
+<h3 id="run-test-cases-on-armv6">Run test cases on armv6</h3>
+<ul>
+<li>Set test project<pre><code>make -f basic.mk set_proj TEST_PROJ=../..
+</code></pre></li>
+<li><p>Build image and packages locally</p>
+<pre><code>make -f manage_dev.mk build_dev_env_armv6
+</code></pre></li>
+<li><p>Generate configuration </p>
+<pre><code>make -f manage_dev.mk gen_proj_conf
+</code></pre></li>
+</ul>
+<ul>
+<li>Run test cases<pre><code>make -f dev.mk test_install
+make -f dev.mk test_reinstall
+make -f dev.mk test_reuninstall
+make -f dev.mk test_installafteruninstall
+make -f dev.mk test_reboot_p1
+make -f dev.mk test_reboot_p2
+</code></pre></li>
+</ul>
+<ul>
+<li>Clean test environment<pre><code>make -f manage_dev.mk clean_dev_env_armv6
+</code></pre></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../../develop/WORKFLOW.html" class="navigation navigation-prev " aria-label="Previous page: work flow">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="PRODUCTIONMODE.html" class="navigation navigation-next " aria-label="Next page: Production mode">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Development mode","level":"5.1","depth":1,"next":{"title":"Production mode","level":"5.2","depth":1,"path":"usage/qa-usage/PRODUCTIONMODE.md","ref":"usage/qa-usage/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"work flow","level":"4.1","depth":1,"path":"develop/WORKFLOW.md","ref":"develop/WORKFLOW.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/qa-usage/DEVELOPMODE.md","mtime":"2018-12-24T06:15:17.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-25T10:09:29.920Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

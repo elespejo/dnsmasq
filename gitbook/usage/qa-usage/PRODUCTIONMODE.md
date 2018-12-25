@@ -1,8 +1,8 @@
 # Production mode
 ### Download testflow packages and unzip
 ```
-wget https://github.com/elespejo/dnsmasq/releases/download/0.9.3/dnsmasq-testflow-0.9.3.zip
-unzip dnsmasq-testflow-0.9.3.zip
+wget https://github.com/elespejo/dnsmasq/releases/download/0.9.5/dnsmasq-testflow-0.9.5.zip
+unzip dnsmasq-testflow-0.9.5.zip
 ```
 
 ### Run test cases on x86
@@ -28,7 +28,7 @@ make -f manage_prod.mk gen_proj_conf
 
 * Download images
 ```
-docker pull elespejo/dnsmasq-x86:0.9.3
+docker pull elespejo/dnsmasq-x86:0.9.5
 ```
 
 * Run test cases
@@ -74,7 +74,7 @@ make -f manage_prod.mk gen_proj_conf
 ```
 * Download images
 ```
-docker pull elespejo/dnsmasq-armv6:0.9.3
+docker pull elespejo/dnsmasq-armv6:0.9.5
 ```
 
 * Run test cases
