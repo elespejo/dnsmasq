@@ -1,8 +1,15 @@
 # Production mode
+### Download testflow packages and unzip
+```
+wget https://github.com/elespejo/dnsmasq/releases/download/0.9.3/dnsmasq-testflow-0.9.3.zip
+unzip dnsmasq-testflow-0.9.3.zip
+```
+
 ### Run test cases on x86
 
 * Download packages
 ```
+cd script
 make -f basic.mk download
 ```
 
@@ -20,6 +27,8 @@ make -f manage_prod.mk gen_proj_conf
 ```
 
 * Run test cases
+
+	**Please run `sudo systemctl disable systemd-resolved.service` if ubuntu 18.04 is used for testing**
 ```
 make -f prod.mk test_install
 make -f prod.mk test_reinstall
@@ -56,6 +65,8 @@ make -f build_dev_pkg.mk gen_proj_conf
 
 
 * Run test cases
+
+	**Please run `sudo systemctl disable systemd-resolved.service` if ubuntu 18.04 is used for testing**
 ```
 make -f prod.mk test_install
 make -f prod.mk test_reinstall
@@ -65,7 +76,6 @@ make -f prod.mk test_reboot_p1
 make -f prod.mk test_reboot_p2
 make -f prod.mk test_poweroff_p1
 make -f prod.mk test_poweroff_p2
-make -f prod.mk test_update
 ```
 
 

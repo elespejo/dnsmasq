@@ -11,23 +11,27 @@ ns_lookup:
 	nslookup www.facebook.com 127.0.0.1
 	nslookup www.github.com 127.0.0.1
 	make -f test_settings.mk check-cache
+	make -s -f basic.mk hint CONTENT="first cache log"
 	sleep 3
 	nslookup www.iqiyi.com 127.0.0.1
 	nslookup www.google.com 127.0.0.1
 	nslookup www.facebook.com 127.0.0.1
 	nslookup www.github.com 127.0.0.1
 	make -f test_settings.mk check-cache
+	make -s -f basic.mk hint CONTENT="second cache log,cache time should be diff from first cache"
 	sleep 7
 	nslookup www.iqiyi.com 127.0.0.1
 	nslookup www.google.com 127.0.0.1
 	nslookup www.facebook.com 127.0.0.1
 	nslookup www.github.com 127.0.0.1
 	make -f test_settings.mk check-cache
+	make -s -f basic.mk hint CONTENT="No new cache log, cache time should be same with second cache"
 	nslookup www.iqiyi.com 127.0.0.1
 	nslookup www.google.com 127.0.0.1
 	nslookup www.facebook.com 127.0.0.1
 	nslookup www.github.com 127.0.0.1
 	make -f test_settings.mk check-cache
+	make -s -f basic.mk hint CONTENT="new cache log, cache time should be diff with second cache"
 
 
 check-cache:
@@ -65,4 +69,9 @@ inner-domain:
 	make -s -f basic.mk hint CONTENT="local should be resolved to 127.0.0.1"
 
 static-ip:
-	make -s -f basic.mk hint CONTENT="please change static setting and check whether ip changed accordingly!"
+	make -s -f basic.mk hint CONTENT="please change static setting before resarting dns"
+	make -f basic.mk confirm
+	make -f manage_prod.mk gen_proj_conf
+	make testflow_restart
+	make -s -f basic.mk hint CONTENT="Please connect the pc behind dns and check static ip"
+	make -f basic.mk confirm
