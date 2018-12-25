@@ -3,6 +3,7 @@ include .env
 
 .PHONY: gen_proj_conf del_proj_conf read_proj_conf
 gen_proj_conf:
+	rm -rf ${TEST_CONF}
 	cd ${PROJECT}-confgenerator && python3 -m confgenerator.cli -f ${PWD}/${TEST_INFO} -d ${PWD}/${TEST_CONF}
 	ls ${TEST_CONF}
 
