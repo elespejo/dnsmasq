@@ -44,7 +44,7 @@ build_dev_env_armv6: build_image_armv6 build_imgAPI_armv6 build_confgen status
 
 clean_pkg:
 	rm -rf ${BUILD_PKG} || true
-	make -f build_dev_pkg.mk status 
+	make -f manage_dev.mk status 
 
 clean_dev_env_x86: clean_image_x86 clean_pkg 
 	make -f basic.mk set_arch ARCH=x86
@@ -58,6 +58,7 @@ status:
 
 .PHONY: gen_proj_conf del_proj_conf read_proj_conf
 gen_proj_conf:
+	rm -rf ${TEST_CONF}
 	cd ${BUILD_PKG}/dnsmasq-confgenerator && python3 -m confgenerator.cli -f ${PWD}/${TEST_INFO} -d ${PWD}/${TEST_CONF}
 	ls ${TEST_CONF}
 

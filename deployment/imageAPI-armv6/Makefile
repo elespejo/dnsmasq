@@ -35,11 +35,11 @@ status_compose_ps: $(COMP_DIR)/$(NAME).yml
 status_compose_log: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml logs || true
 
-status_dnsmasq_log: $(COMP_DIR)/$(NAME).yml
+status_dnsmasq_dhcp: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dhcp.leases || true
 
-status_dnsmasq_dhcp: $(COMP_DIR)/$(NAME).yml
-	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dnsmasq.log | tail -n 100 || true
+status_dnsmasq_log: $(COMP_DIR)/$(NAME).yml
+	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml exec router_dnsmasq cat dnsmasq.log  || true
 
 status: status_compose_ps status_compose_log status_dnsmasq_log status_dnsmasq_dhcp	
 

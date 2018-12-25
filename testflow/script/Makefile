@@ -32,8 +32,6 @@ testflow_restart:
 testflow_list:
 	make -s -f basic.mk hint CONTENT="make list"
 	make -C ${IMG_PKG} list
-	make -s -f basic.mk hint CONTENT="make test_list"
-	make -C ${IMG_PKG} test_list NAME=dns
 	make -s -f basic.mk confirm
 .PHONY: testflow_remove
 testflow_remove:
@@ -46,6 +44,9 @@ testflow_remove:
 testflow_status:
 	make -s -f basic.mk hint CONTENT="make status"
 	make -C ${IMG_PKG} status NAME=dns
-	make -s -f basic.mk hint CONTENT="make test_status"
-	make -C ${IMG_PKG} test_status NAME=dns
+	make -s -f basic.mk confirm
+.PHONY: testflow_log
+testflow_log:
+	make -s -f basic.mk hint CONTENT="make status_dnsmasq_log"
+	make -C ${IMG_PKG} status_dnsmasq_log NAME=dns
 	make -s -f basic.mk confirm
