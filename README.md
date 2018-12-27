@@ -2,9 +2,9 @@
   <img src="https://www.lucidchart.com/publicSegments/view/29425bed-466b-494b-9eed-d58802ef3065/image.png">
 </p>
 
-<h1 align="center"> Project Title </h1>
+<h1 align="center"> dnsmasq </h1>
 <p align="center">
-  <b >One Paragraph of project description goes here</b>
+  <b >dnsmasq docker version</b>
 </p>
 <br>
 
