@@ -4,7 +4,7 @@
 
 <h1 align="center"> dnsmasq </h1>
 <p align="center">
-  <b >dnsmasq docker version</b>
+  <b >dnsmasq docker images for both x86 and armv6</b>
 </p>
 <br>
 
