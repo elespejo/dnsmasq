@@ -33,7 +33,7 @@ cd dnsmasq-confgenerator/
     ls dnsmasq-confgenerator/
     confgenerator  dnsmasq-info.yml
     ```
-    Modify the conf-info `dnsmasq-info.yml`. The meaning of each option see [here](http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
+    Modify the conf-info `dnsmasq-info.yml`. The meaning of each option see [here](http://www.thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html). **If you need to add more options to conf-info, just new a setting file and put it in `dnsconf-dir`**
     ```yaml
     # dnsmasq-info.yml
     dhcp-range: 192.168.0.5,192.168.0.150,12h
