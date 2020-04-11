@@ -20,6 +20,7 @@ info_dict = yaml.load(open(info, 'r'))
 
 os.makedirs(path)
 copy(pwd+'/accelerated-domains.china.conf', path)
+copy(pwd+'/apple.china.conf', path)
 
 # copy files from [dnsconf-dir] to [path]
 conf_dir=info_dict.pop('dnsconf-dir')
